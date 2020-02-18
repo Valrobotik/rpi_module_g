@@ -1,0 +1,11 @@
+PP
+00P
+MODL:URG-04LX-UG01(Simple-URG)(Hokuyo Automatic Co.,Ltd.);N
+DMIN:20;4
+DMAX:5600;_
+ARES:1024;\
+AMIN:44;7
+AMAX:725;o
+AFRT:384;6
+SCAN:600;e
+

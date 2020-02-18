@@ -1,0 +1,38 @@
+# LISTE des commande pour le robot, ils seront execute dans l'ordre:
+# structure d'une commande:
+#	G00 pour du deplacement, X__ et Y__ pour la destination
+#	A__ pour l'angle et T__ pour le temps avant de passer a la suite si non reussi (watch dog)
+#  G00 X00 Y00 A00  	-  GO to X Y position
+#  G92 X00 y00 A00  	-  Reset current position to X Y Angle
+#  M666			-  test
+#
+/
+/
+/reset pos
+M18 T0.5
+G92 X00 Y00 A00 T0.5
+M19 T0.5
+/
+# Parcours de test
+G1 X1500 T10
+M114 T1
+G1 X2000 Y1000 T10
+M114 T1
+G1 X2000 Y1500 T10
+M114 T1
+G1 X500 T10
+M114 T1
+G1 X500 Y500 T10
+M114 T1
+M18 T0.5
+/
+# Aller retours
+/G1 X1000 T10
+/M114 T1
+/G1 X00 T10
+/M114 T1
+/G1 X1000 T10
+/M114 T1
+/G1 X00 T10
+/M114 T1
+/M18 T0.5
