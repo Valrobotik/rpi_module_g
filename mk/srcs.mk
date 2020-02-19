@@ -24,6 +24,8 @@ LIDAR =		lidar_fct.c	\
 		edge_shift.c	\
 		pile.c		\
 		main.c		\
+		ftoa.c		\
+		reverse.c	\
 		mini_lib.c
 
 

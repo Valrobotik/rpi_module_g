@@ -48,6 +48,7 @@ typedef struct		s_pile
 
 }			t_pile;
 
+void ftoa(float f, char *str, uint8_t precision);
 /*	FONCTION REAL CONDITIONS 	*/
 
 int	start_robot(void);
@@ -64,7 +65,10 @@ int	detect_falling(int value, int elmt);
 t_pile	*build_pile(void);
 int	unpile_cmd(t_pile **pile);
 void	get_resp(struct pollfd fds[1], int fd);
-//int 	wait_tirette(void);
+
+/*	FONCTION PILE HUNDLER		*/
+
+char	*reverse_side(char *str);
 
 /*	SETUP FONCTION			*/
 

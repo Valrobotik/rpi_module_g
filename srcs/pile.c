@@ -61,30 +61,6 @@ double	cmd_find_remove(char elmt, char **str)
 		return (-1);
 }
 
-char	*reverse_side(char *str)
-{
-	char	*rev;
-	char	*start;
-	int	k;
-
-	k = 0;
-	while (str[k] && str[k] != 'X')
-		k++;
-	if (str[k] == 'X')
-	{
-		rev = ft_strdup(str + k + 1);
-		str[k + 1] = 0;
-		start = ft_strjoin(str, "-");
-		free(str);
-		str = ft_strjoin(start, rev);
-		free(start);
-		start = NULL;
-	}
-	ft_putstr("reversed as: ");
-	ft_putstr(str);
-	ft_putstr("\n");
-	return (str);
-}
 
 int	is_move(char **str, t_pile **pile)
 {
