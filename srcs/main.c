@@ -1,13 +1,9 @@
+#include "main.h"
 #include "open.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include "lidar.h"
-#include "libft.h"
-#include <bcm2835.h>
 
 #define BAUDRATE B19200
 
-#include <termios.h>
 
 /* set interface for lidar */
 

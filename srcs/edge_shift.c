@@ -1,4 +1,4 @@
-#include "lidar.h"
+#include "main.h"
 
 #define	SET 1
 #define	GET 0

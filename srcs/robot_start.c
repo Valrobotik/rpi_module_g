@@ -1,6 +1,5 @@
-#include <bcm2835.h>
-#include "lidar.h"
-#include <unistd.h>
+#include "main.h"
+#include <time.h>
 
 /* ask if we have time to continue (within 95 secs ?)*/
 /* Le Define STOP_TIME, est defini dans l'include et est en seconde */

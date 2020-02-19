@@ -1,10 +1,6 @@
-#include "libft.h"
-#include "lidar.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include "open.h"
+#include "main.h"
+#include <time.h>
 #include <stdio.h>
 
 #define PROCESS 1

@@ -1,59 +1,26 @@
-#include "libft.h"
-#include <poll.h>
-#include <time.h>
+#ifndef LIDAR_H
+# define LIDAR_H
+# include "main.h"
+# include <time.h>
+# include <poll.h>
+# include <termios.h>
 
-#define LIDAR_BUFF 6000 //dix fois trop grand pour l'essai
-#define READ_BUFF 200
-#define NBR_VAL 682
-#define WIN_HEIGHT 600
-#define WIN_WIDTH 1200
+# define LIDAR_BUFF 6000 //dix fois trop grand pour l'essai
+# define NBR_VAL 682
 
-#define GNL_BUFF_SIZE 2048
+# define READ_BUFF	200
 
-#define CMD_INF "MD0044072501000\n" //command used to do infinite resp, terminated by QT\n command
+# define WIN_HEIGHT 600
+# define WIN_WIDTH 1200
 
-#define PINOUT 21
-#define PINREED 27
-#define PINRESET 22
-#define PINSIDE 11
-
-#define	B_SIDE 0
-#define Y_SIDE 1
-
-#define STOP_TIME 98 	//prevoir une secu, genre 95/100
-
-#define SIDE 4
-#define REED 3
-#define RESET 2		//1 is reserved for static initialisation
+# define CMD_INF "MD0044072501000\n" //command used to do infinite resp, terminated by QT\n command
 
 
 char		g_buff[LIDAR_BUFF];
 int		*g_range;
 int		g_size;
-struct pollfd 	g_fds[1];
-int		g_fd;
-int		g_wr;
-int		g_rd;
-int		g_flag;
-int		g_side;
-clock_t		g_time_start;
 
-	/* chained list, containing a status (in process or not procceded) and a command  */
-
-typedef struct		s_pile
-{
-	struct s_pile	*next;
-	char		*cmd;
-	int		status;
-	int		move;
-	double		x;
-	double		y;
-	double		a;
-	double		time;
-
-}			t_pile;
-
-	/* decode function */
+/*	DECODE FUNCTION 		*/
 
 //	find command, and srip it
 char	*cmd_finder(char *str, int *pos);
@@ -70,7 +37,7 @@ int	code_decode(char *str, int *pos, int nb);
 //	decode 2 or 3 byte according to the lidar encodage into an int
 int	decode(const char code[], int nbr_bytes);
 
-	/* new lib functions */
+/*	NEW LIB FUNCTION		*/
 
 void	ft_print_digit(int *range, int size);
 void	ft_print_digit_fd(int fd, int *range, int size);
@@ -78,9 +45,8 @@ int	fct_print(char buffer[READ_BUFF]);
 void	led_stop(void);
 int	fct_decod_resp(void);
 int	fct_decod_resp_name(char *cmd);
-//int	get_next_line(char **str, char buffer[GNL_BUFF_SIZE]);
 
-	/* diplay function */
+/*	DISPLAY FUNCTION		*/
 
 //	display x function theta
 void	linear_display(void);
@@ -92,11 +58,7 @@ int	display(int argc, char **argv);
 void	form_bat(void);
 void	form_tri(void);
 
-	/* flag functions */
-
-void	setup_flag(void);
-
-	/* com function */
+/*	COMMUNICATION FUNCTION		*/
 
 int	open_serial(void);
 int	lidar_write(char *word, int fd);
@@ -114,25 +76,4 @@ void	lidar_get_resp_print(struct pollfd fds[1], int fd);
 int	lidar_try_get_resp_print(struct pollfd fds[1], int fd);
 
 int	lidar_cmd_is_premade(char buffer[READ_BUFF]);
-
-/*	FONCTION REAL CONDITIONS */
-
-int	start_robot(void);
-int	do_flag(char *str, int argc, char **argv);
-int	real_condition(void);
-
-/*	FONCTION RISE & FALL	*/
-
-int	detect_rising(int value, int elmt);
-int	detect_falling(int value, int elmt);
-
-/*	FONCTION PILE HUNDLER	*/
-
-t_pile	*build_pile(void);
-int	unpile_cmd(t_pile **pile);
-void	get_resp(struct pollfd fds[1], int fd);
-//int 	wait_tirette(void);
-
-/*	SETUP FONCTION		*/
-
-int	set_interface_attribs(int fd, int speed, int parity);
+#endif
